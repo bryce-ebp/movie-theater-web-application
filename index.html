@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Bryce B"/>
+    <meta name="description" content="Register to see a movie here at the Movie Theatre Theater!"/>
+    <meta name="keywords" content="Movie, Theatre, Registration, New Movies"/>
+
+    <link rel="stylesheet" href="css/main.css" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+
+    <title>Movie Theatre App</title>
+</head>
+<body>
+    <form action="signin.php" method="post" class="">
+        <p>
+            <label for="name">Please enter your first and last name: </label>
+            <input type="text" name="name" id="name" required/><br />
+        </p>
+        
+        <p>
+            <label for="size">Number of tickets: </label>
+            <span id="display"></span>
+            <input type="range" min="1" max="15" name="size" value="1" step="1" id="size"/><br />
+        </p>
+        
+        <p>
+            
+        </p>
+        
+        <p><input type="submit" value="Purchase tickets."/></p>
+    </form>
+    
+</body>
+</html>
