@@ -5,3 +5,4 @@
 1. Request to use rust for the backend. (http://diesel.rs/)
 1. Make a database and store info.
 1. Cross check with the database what seats are taken for what movie.
+1. Figure out how to find what occurance of a class you clicked on from what parent.
