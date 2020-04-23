@@ -9,10 +9,16 @@ $(document).ready(function() {
         $display.html(tickets);
     });
     
-    $('form').on('submit', function () {
-        const pattern = //;
-        if ($("#name").val().match(pattern)) {
-            
+    $('form').on('submit', function (e) {
+        const $name = $("#name");
+        
+        // Create our regex pattern (2 words under 25 length).
+        const pattern = /^(?!.{25,})(\w+\s+\w+?)$/;
+        if (!$("#name").val().match(pattern)) {
+            // Stop the form from submitting so we can ask them to fill it out correctly.
+            e.preventDefault();
+            // Bring their name into focus so they can quickly type.
+            $("#name").focus();
         }
     });
     

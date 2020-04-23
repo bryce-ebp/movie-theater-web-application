@@ -1,0 +1,26 @@
+body {
+    background-color: #111111;
+    color: #eeeeee;
+}
+
+.open-seat {
+    background-image: url(../media/open-seat.png);
+    max-height: 250px;
+    max-width: 250px;
+}
+
+.taken-seat {
+    background-image: url(../media/taken-seat.png);
+    max-height: 250px;
+    max-width: 250px;
+}
+
+
+#seating {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(26, 1fr);
+}
+
+
