@@ -15,7 +15,8 @@ $(document).ready(function() {
         // Create our regex pattern (2 words under 25 length).
         const pattern = /^(?!.{25,})(\w+\s+\w+?)$/;
         if (!$("#name").val().match(pattern)) {
-            // Stop the form from submitting so we can ask them to fill it out correctly.
+            // Stop the form from submitting so we can
+            // ask them to fill it out correctly.
             e.preventDefault();
             // Bring their name into focus so they can quickly type.
             $("#name").focus();
