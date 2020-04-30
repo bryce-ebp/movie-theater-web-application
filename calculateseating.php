@@ -15,12 +15,12 @@
     $cost = $_POST["cost"];
     $seat = $_POST["seat"];
     
-    /*$query = "INSERT INTO orders(name, movie, cost, seat)"
+    $query = "INSERT INTO orders(name, movie, cost, seat)"
         . "VALUES('$name', '$movie', $cost, '$seat')";
 
     if ($connection->query($query) === FALSE) {
         echo "Error: " . $query . "<br>" . $connection->error;
-    }*/
+    }
 
     echo var_dump($_POST);;
 ?>

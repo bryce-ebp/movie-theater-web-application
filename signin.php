@@ -19,13 +19,12 @@
 <body>
     <?php
         // create our vars for later use
-        $headers = getallheaders();
         $name = htmlspecialchars($_POST["name"]);
         $size = $_POST["size"];
         $movie = $_POST["movie"];
         $refer = $_SERVER["HTTP_REFERER"];
         // check to make sure they came from index
-        if (strcmp($_SERVER["HTTP_REFERER"], "http://localhost/") != 0) {
+        if (strcmp($refer, "http://localhost/") != 0) {
             header("Location: ..");
             exit();
         }
@@ -46,219 +45,227 @@
             $cost = $size * $row["price"];
         }
     
-        /*$sql = "INSERT INTO customers (name, movie, size) VALUES"
+        $sql = "INSERT INTO customers (name, movie, size) VALUES"
             . "('$name', '$movie', '$size')";
         
         if ($connection->query($sql) === FALSE) {
             echo "Error: " . $sql . "<br>" . $connection->error;
-        }*/
-        
+        }
+    
         echo "Welcome, $name! We appreciate that you chose Movie Theater&#59;"
-        . " please select your $size seat(s)&#46; The cost is: $cost";
+            . " please select your $size seat(s)&#46; The cost is: $cost";
+        
+        // Fix length on post server.
+        $length = strlen($movie);
+        if ($length >= 15) {
+            $movie = substr($movie, 0, 15 - $length);
+        }
     ?>
     
     
     
     <button style="position: fixed; top: 10px; right: 10px;">Ok!</button>
     
-    <div id="A" class="flex-container">
-        <div class="box open-seat" data-seat="A1"></div>
-        <div class="box open-seat" data-seat="A2"></div>
-        <div class="box open-seat" data-seat="A3"></div>
-        <div class="box open-seat" data-seat="A4"></div>
-        <div class="box open-seat" data-seat="A5"></div>
-        <div class="box open-seat" data-seat="A6"></div>
-        <div class="box open-seat" data-seat="A7"></div>
-        <div class="box open-seat" data-seat="A8"></div>
-        <div class="box open-seat" data-seat="A9"></div>
-        <div class="box open-seat" data-seat="A10"></div>
-        <div class="box open-seat" data-seat="A11"></div>
-        <div class="box open-seat" data-seat="A12"></div>
-        <div class="box open-seat" data-seat="A13"></div>
-        <div class="box open-seat" data-seat="A14"></div>
-        <div class="box open-seat" data-seat="A15"></div>
-    </div>
+    <div id="seats">
+        <div id="A" class="flex-container">
+            <div class="box open-seat" data-seat="A1"></div>
+            <div class="box open-seat" data-seat="A2"></div>
+            <div class="box open-seat" data-seat="A3"></div>
+            <div class="box open-seat" data-seat="A4"></div>
+            <div class="box open-seat" data-seat="A5"></div>
+            <div class="box open-seat" data-seat="A6"></div>
+            <div class="box open-seat" data-seat="A7"></div>
+            <div class="box open-seat" data-seat="A8"></div>
+            <div class="box open-seat" data-seat="A9"></div>
+            <div class="box open-seat" data-seat="A10"></div>
+            <div class="box open-seat" data-seat="A11"></div>
+            <div class="box open-seat" data-seat="A12"></div>
+            <div class="box open-seat" data-seat="A13"></div>
+            <div class="box open-seat" data-seat="A14"></div>
+            <div class="box open-seat" data-seat="A15"></div>
+        </div>
 
-    <div id="B" class="flex-container">
-        <div class="box open-seat" data-seat="B2"></div>
-        <div class="box open-seat" data-seat="B2"></div>
-        <div class="box open-seat" data-seat="B3"></div>
-        <div class="box open-seat" data-seat="B4"></div>
-        <div class="box open-seat" data-seat="B5"></div>
-        <div class="box open-seat" data-seat="B6"></div>
-        <div class="box open-seat" data-seat="B7"></div>
-        <div class="box open-seat" data-seat="B8"></div>
-        <div class="box open-seat" data-seat="B9"></div>
-        <div class="box open-seat" data-seat="B10"></div>
-        <div class="box open-seat" data-seat="B11"></div>
-        <div class="box open-seat" data-seat="B12"></div>
-        <div class="box open-seat" data-seat="B13"></div>
-        <div class="box open-seat" data-seat="B14"></div>
-        <div class="box open-seat" data-seat="B15"></div>
-    </div>
+        <div id="B" class="flex-container">
+            <div class="box open-seat" data-seat="B2"></div>
+            <div class="box open-seat" data-seat="B2"></div>
+            <div class="box open-seat" data-seat="B3"></div>
+            <div class="box open-seat" data-seat="B4"></div>
+            <div class="box open-seat" data-seat="B5"></div>
+            <div class="box open-seat" data-seat="B6"></div>
+            <div class="box open-seat" data-seat="B7"></div>
+            <div class="box open-seat" data-seat="B8"></div>
+            <div class="box open-seat" data-seat="B9"></div>
+            <div class="box open-seat" data-seat="B10"></div>
+            <div class="box open-seat" data-seat="B11"></div>
+            <div class="box open-seat" data-seat="B12"></div>
+            <div class="box open-seat" data-seat="B13"></div>
+            <div class="box open-seat" data-seat="B14"></div>
+            <div class="box open-seat" data-seat="B15"></div>
+        </div>
 
-    <div id="C" class="flex-container">
-        <div class="box open-seat" data-seat="C2"></div>
-        <div class="box open-seat" data-seat="C2"></div>
-        <div class="box open-seat" data-seat="C3"></div>
-        <div class="box open-seat" data-seat="C4"></div>
-        <div class="box open-seat" data-seat="C5"></div>
-        <div class="box open-seat" data-seat="C6"></div>
-        <div class="box open-seat" data-seat="C7"></div>
-        <div class="box open-seat" data-seat="C8"></div>
-        <div class="box open-seat" data-seat="C9"></div>
-        <div class="box open-seat" data-seat="C10"></div>
-        <div class="box open-seat" data-seat="C11"></div>
-        <div class="box open-seat" data-seat="C12"></div>
-        <div class="box open-seat" data-seat="C13"></div>
-        <div class="box open-seat" data-seat="C14"></div>
-        <div class="box open-seat" data-seat="C15"></div>
-    </div>
+        <div id="C" class="flex-container">
+            <div class="box open-seat" data-seat="C2"></div>
+            <div class="box open-seat" data-seat="C2"></div>
+            <div class="box open-seat" data-seat="C3"></div>
+            <div class="box open-seat" data-seat="C4"></div>
+            <div class="box open-seat" data-seat="C5"></div>
+            <div class="box open-seat" data-seat="C6"></div>
+            <div class="box open-seat" data-seat="C7"></div>
+            <div class="box open-seat" data-seat="C8"></div>
+            <div class="box open-seat" data-seat="C9"></div>
+            <div class="box open-seat" data-seat="C10"></div>
+            <div class="box open-seat" data-seat="C11"></div>
+            <div class="box open-seat" data-seat="C12"></div>
+            <div class="box open-seat" data-seat="C13"></div>
+            <div class="box open-seat" data-seat="C14"></div>
+            <div class="box open-seat" data-seat="C15"></div>
+        </div>
 
-    <div id="D" class="flex-container">
-        <div class="box open-seat" data-seat="D2"></div>
-        <div class="box open-seat" data-seat="D2"></div>
-        <div class="box open-seat" data-seat="D3"></div>
-        <div class="box open-seat" data-seat="D4"></div>
-        <div class="box open-seat" data-seat="D5"></div>
-        <div class="box open-seat" data-seat="D6"></div>
-        <div class="box open-seat" data-seat="D7"></div>
-        <div class="box open-seat" data-seat="D8"></div>
-        <div class="box open-seat" data-seat="D9"></div>
-        <div class="box open-seat" data-seat="D10"></div>
-        <div class="box open-seat" data-seat="D11"></div>
-        <div class="box open-seat" data-seat="D12"></div>
-        <div class="box open-seat" data-seat="D13"></div>
-        <div class="box open-seat" data-seat="D14"></div>
-        <div class="box open-seat" data-seat="D15"></div>
-    </div>
+        <div id="D" class="flex-container">
+            <div class="box open-seat" data-seat="D2"></div>
+            <div class="box open-seat" data-seat="D2"></div>
+            <div class="box open-seat" data-seat="D3"></div>
+            <div class="box open-seat" data-seat="D4"></div>
+            <div class="box open-seat" data-seat="D5"></div>
+            <div class="box open-seat" data-seat="D6"></div>
+            <div class="box open-seat" data-seat="D7"></div>
+            <div class="box open-seat" data-seat="D8"></div>
+            <div class="box open-seat" data-seat="D9"></div>
+            <div class="box open-seat" data-seat="D10"></div>
+            <div class="box open-seat" data-seat="D11"></div>
+            <div class="box open-seat" data-seat="D12"></div>
+            <div class="box open-seat" data-seat="D13"></div>
+            <div class="box open-seat" data-seat="D14"></div>
+            <div class="box open-seat" data-seat="D15"></div>
+        </div>
 
-    <div id="E" class="flex-container">
-        <div class="box open-seat" data-seat="E2"></div>
-        <div class="box open-seat" data-seat="E2"></div>
-        <div class="box open-seat" data-seat="E3"></div>
-        <div class="box open-seat" data-seat="E4"></div>
-        <div class="box open-seat" data-seat="E5"></div>
-        <div class="box open-seat" data-seat="E6"></div>
-        <div class="box open-seat" data-seat="E7"></div>
-        <div class="box open-seat" data-seat="E8"></div>
-        <div class="box open-seat" data-seat="E9"></div>
-        <div class="box open-seat" data-seat="E10"></div>
-        <div class="box open-seat" data-seat="E11"></div>
-        <div class="box open-seat" data-seat="E12"></div>
-        <div class="box open-seat" data-seat="E13"></div>
-        <div class="box open-seat" data-seat="E14"></div>
-        <div class="box open-seat" data-seat="E15"></div>
-    </div>
+        <div id="E" class="flex-container">
+            <div class="box open-seat" data-seat="E2"></div>
+            <div class="box open-seat" data-seat="E2"></div>
+            <div class="box open-seat" data-seat="E3"></div>
+            <div class="box open-seat" data-seat="E4"></div>
+            <div class="box open-seat" data-seat="E5"></div>
+            <div class="box open-seat" data-seat="E6"></div>
+            <div class="box open-seat" data-seat="E7"></div>
+            <div class="box open-seat" data-seat="E8"></div>
+            <div class="box open-seat" data-seat="E9"></div>
+            <div class="box open-seat" data-seat="E10"></div>
+            <div class="box open-seat" data-seat="E11"></div>
+            <div class="box open-seat" data-seat="E12"></div>
+            <div class="box open-seat" data-seat="E13"></div>
+            <div class="box open-seat" data-seat="E14"></div>
+            <div class="box open-seat" data-seat="E15"></div>
+        </div>
 
-    <div id="F" class="flex-container">
-        <div class="box open-seat" data-seat="F2"></div>
-        <div class="box open-seat" data-seat="F2"></div>
-        <div class="box open-seat" data-seat="F3"></div>
-        <div class="box open-seat" data-seat="F4"></div>
-        <div class="box open-seat" data-seat="F5"></div>
-        <div class="box open-seat" data-seat="F6"></div>
-        <div class="box open-seat" data-seat="F7"></div>
-        <div class="box open-seat" data-seat="F8"></div>
-        <div class="box open-seat" data-seat="F9"></div>
-        <div class="box open-seat" data-seat="F10"></div>
-        <div class="box open-seat" data-seat="F11"></div>
-        <div class="box open-seat" data-seat="F12"></div>
-        <div class="box open-seat" data-seat="F13"></div>
-        <div class="box open-seat" data-seat="F14"></div>
-        <div class="box open-seat" data-seat="F15"></div>
-    </div>
+        <div id="F" class="flex-container">
+            <div class="box open-seat" data-seat="F2"></div>
+            <div class="box open-seat" data-seat="F2"></div>
+            <div class="box open-seat" data-seat="F3"></div>
+            <div class="box open-seat" data-seat="F4"></div>
+            <div class="box open-seat" data-seat="F5"></div>
+            <div class="box open-seat" data-seat="F6"></div>
+            <div class="box open-seat" data-seat="F7"></div>
+            <div class="box open-seat" data-seat="F8"></div>
+            <div class="box open-seat" data-seat="F9"></div>
+            <div class="box open-seat" data-seat="F10"></div>
+            <div class="box open-seat" data-seat="F11"></div>
+            <div class="box open-seat" data-seat="F12"></div>
+            <div class="box open-seat" data-seat="F13"></div>
+            <div class="box open-seat" data-seat="F14"></div>
+            <div class="box open-seat" data-seat="F15"></div>
+        </div>
 
-    <div id="G" class="flex-container">
-        <div class="box open-seat" data-seat="G2"></div>
-        <div class="box open-seat" data-seat="G2"></div>
-        <div class="box open-seat" data-seat="G3"></div>
-        <div class="box open-seat" data-seat="G4"></div>
-        <div class="box open-seat" data-seat="G5"></div>
-        <div class="box open-seat" data-seat="G6"></div>
-        <div class="box open-seat" data-seat="G7"></div>
-        <div class="box open-seat" data-seat="G8"></div>
-        <div class="box open-seat" data-seat="G9"></div>
-        <div class="box open-seat" data-seat="G10"></div>
-        <div class="box open-seat" data-seat="G11"></div>
-        <div class="box open-seat" data-seat="G12"></div>
-        <div class="box open-seat" data-seat="G13"></div>
-        <div class="box open-seat" data-seat="G14"></div>
-        <div class="box open-seat" data-seat="G15"></div>
-    </div>
+        <div id="G" class="flex-container">
+            <div class="box open-seat" data-seat="G2"></div>
+            <div class="box open-seat" data-seat="G2"></div>
+            <div class="box open-seat" data-seat="G3"></div>
+            <div class="box open-seat" data-seat="G4"></div>
+            <div class="box open-seat" data-seat="G5"></div>
+            <div class="box open-seat" data-seat="G6"></div>
+            <div class="box open-seat" data-seat="G7"></div>
+            <div class="box open-seat" data-seat="G8"></div>
+            <div class="box open-seat" data-seat="G9"></div>
+            <div class="box open-seat" data-seat="G10"></div>
+            <div class="box open-seat" data-seat="G11"></div>
+            <div class="box open-seat" data-seat="G12"></div>
+            <div class="box open-seat" data-seat="G13"></div>
+            <div class="box open-seat" data-seat="G14"></div>
+            <div class="box open-seat" data-seat="G15"></div>
+        </div>
 
-    <div id="H" class="flex-container">
-        <div class="box open-seat" data-seat="H2"></div>
-        <div class="box open-seat" data-seat="H2"></div>
-        <div class="box open-seat" data-seat="H3"></div>
-        <div class="box open-seat" data-seat="H4"></div>
-        <div class="box open-seat" data-seat="H5"></div>
-        <div class="box open-seat" data-seat="H6"></div>
-        <div class="box open-seat" data-seat="H7"></div>
-        <div class="box open-seat" data-seat="H8"></div>
-        <div class="box open-seat" data-seat="H9"></div>
-        <div class="box open-seat" data-seat="H10"></div>
-        <div class="box open-seat" data-seat="H11"></div>
-        <div class="box open-seat" data-seat="H12"></div>
-        <div class="box open-seat" data-seat="H13"></div>
-        <div class="box open-seat" data-seat="H14"></div>
-        <div class="box open-seat" data-seat="H15"></div>
-    </div>
+        <div id="H" class="flex-container">
+            <div class="box open-seat" data-seat="H2"></div>
+            <div class="box open-seat" data-seat="H2"></div>
+            <div class="box open-seat" data-seat="H3"></div>
+            <div class="box open-seat" data-seat="H4"></div>
+            <div class="box open-seat" data-seat="H5"></div>
+            <div class="box open-seat" data-seat="H6"></div>
+            <div class="box open-seat" data-seat="H7"></div>
+            <div class="box open-seat" data-seat="H8"></div>
+            <div class="box open-seat" data-seat="H9"></div>
+            <div class="box open-seat" data-seat="H10"></div>
+            <div class="box open-seat" data-seat="H11"></div>
+            <div class="box open-seat" data-seat="H12"></div>
+            <div class="box open-seat" data-seat="H13"></div>
+            <div class="box open-seat" data-seat="H14"></div>
+            <div class="box open-seat" data-seat="H15"></div>
+        </div>
 
-    <div id="I" class="flex-container">
-        <div class="box open-seat" data-seat="I2"></div>
-        <div class="box open-seat" data-seat="I2"></div>
-        <div class="box open-seat" data-seat="I3"></div>
-        <div class="box open-seat" data-seat="I4"></div>
-        <div class="box open-seat" data-seat="I5"></div>
-        <div class="box open-seat" data-seat="I6"></div>
-        <div class="box open-seat" data-seat="I7"></div>
-        <div class="box open-seat" data-seat="I8"></div>
-        <div class="box open-seat" data-seat="I9"></div>
-        <div class="box open-seat" data-seat="I10"></div>
-        <div class="box open-seat" data-seat="I11"></div>
-        <div class="box open-seat" data-seat="I12"></div>
-        <div class="box open-seat" data-seat="I13"></div>
-        <div class="box open-seat" data-seat="I14"></div>
-        <div class="box open-seat" data-seat="I15"></div>
-    </div>
+        <div id="I" class="flex-container">
+            <div class="box open-seat" data-seat="I2"></div>
+            <div class="box open-seat" data-seat="I2"></div>
+            <div class="box open-seat" data-seat="I3"></div>
+            <div class="box open-seat" data-seat="I4"></div>
+            <div class="box open-seat" data-seat="I5"></div>
+            <div class="box open-seat" data-seat="I6"></div>
+            <div class="box open-seat" data-seat="I7"></div>
+            <div class="box open-seat" data-seat="I8"></div>
+            <div class="box open-seat" data-seat="I9"></div>
+            <div class="box open-seat" data-seat="I10"></div>
+            <div class="box open-seat" data-seat="I11"></div>
+            <div class="box open-seat" data-seat="I12"></div>
+            <div class="box open-seat" data-seat="I13"></div>
+            <div class="box open-seat" data-seat="I14"></div>
+            <div class="box open-seat" data-seat="I15"></div>
+        </div>
 
-    <div id="J" class="flex-container">
-        <div class="box open-seat" data-seat="J2"></div>
-        <div class="box open-seat" data-seat="J2"></div>
-        <div class="box open-seat" data-seat="J3"></div>
-        <div class="box open-seat" data-seat="J4"></div>
-        <div class="box open-seat" data-seat="J5"></div>
-        <div class="box open-seat" data-seat="J6"></div>
-        <div class="box open-seat" data-seat="J7"></div>
-        <div class="box open-seat" data-seat="J8"></div>
-        <div class="box open-seat" data-seat="J9"></div>
-        <div class="box open-seat" data-seat="J10"></div>
-        <div class="box open-seat" data-seat="J11"></div>
-        <div class="box open-seat" data-seat="J12"></div>
-        <div class="box open-seat" data-seat="J13"></div>
-        <div class="box open-seat" data-seat="J14"></div>
-        <div class="box open-seat" data-seat="J15"></div>
-    </div>
+        <div id="J" class="flex-container">
+            <div class="box open-seat" data-seat="J2"></div>
+            <div class="box open-seat" data-seat="J2"></div>
+            <div class="box open-seat" data-seat="J3"></div>
+            <div class="box open-seat" data-seat="J4"></div>
+            <div class="box open-seat" data-seat="J5"></div>
+            <div class="box open-seat" data-seat="J6"></div>
+            <div class="box open-seat" data-seat="J7"></div>
+            <div class="box open-seat" data-seat="J8"></div>
+            <div class="box open-seat" data-seat="J9"></div>
+            <div class="box open-seat" data-seat="J10"></div>
+            <div class="box open-seat" data-seat="J11"></div>
+            <div class="box open-seat" data-seat="J12"></div>
+            <div class="box open-seat" data-seat="J13"></div>
+            <div class="box open-seat" data-seat="J14"></div>
+            <div class="box open-seat" data-seat="J15"></div>
+        </div>
 
-    <div id="K" class="flex-container">
-        <div class="box open-seat" data-seat="K2"></div>
-        <div class="box open-seat" data-seat="K2"></div>
-        <div class="box open-seat" data-seat="K3"></div>
-        <div class="box open-seat" data-seat="K4"></div>
-        <div class="box open-seat" data-seat="K5"></div>
-        <div class="box open-seat" data-seat="K6"></div>
-        <div class="box open-seat" data-seat="K7"></div>
-        <div class="box open-seat" data-seat="K8"></div>
-        <div class="box open-seat" data-seat="K9"></div>
-        <div class="box open-seat" data-seat="K10"></div>
-        <div class="box open-seat" data-seat="K11"></div>
-        <div class="box open-seat" data-seat="K12"></div>
-        <div class="box open-seat" data-seat="K13"></div>
-        <div class="box open-seat" data-seat="K14"></div>
-        <div class="box open-seat" data-seat="K15"></div>
+        <div id="K" class="flex-container">
+            <div class="box open-seat" data-seat="K2"></div>
+            <div class="box open-seat" data-seat="K2"></div>
+            <div class="box open-seat" data-seat="K3"></div>
+            <div class="box open-seat" data-seat="K4"></div>
+            <div class="box open-seat" data-seat="K5"></div>
+            <div class="box open-seat" data-seat="K6"></div>
+            <div class="box open-seat" data-seat="K7"></div>
+            <div class="box open-seat" data-seat="K8"></div>
+            <div class="box open-seat" data-seat="K9"></div>
+            <div class="box open-seat" data-seat="K10"></div>
+            <div class="box open-seat" data-seat="K11"></div>
+            <div class="box open-seat" data-seat="K12"></div>
+            <div class="box open-seat" data-seat="K13"></div>
+            <div class="box open-seat" data-seat="K14"></div>
+            <div class="box open-seat" data-seat="K15"></div>
+        </div>
     </div>
-
+    
     <script type="text/javascript">
         const max_clicks = <?php echo $size ?>;
         let clicks = 0;
@@ -339,35 +346,38 @@
             }
             
             xmlhttp.send(data);
+            alert("Thank you for choosing the movie theater.");
+            window.history.back();
         });
         
         let seats = "";
         
-        
+    </script>
         <?php
-            foreach ($connection->query("SELECT seat FROM orders") as $row) {
+            foreach ($connection->query("SELECT seat FROM orders WHERE movie='".$movie.
+"'") as $row) {
         ?>
+    <script>
                 seats += '<?php echo $row["seat"]; ?>';
+    </script>
         <?php
             }
         ?>
-        
-        
+    <script>
         let array = seats.split(" ").forEach(elem => {
             console.log(elem);
-            switch(elem[0]) {
-                case "A":
-                    let children = $("#A").children;
-                    for (let i = 0; i < children.length; ++i) {
-                        let cur_child = $(children[i]);
-                        if (elem.match(cur_child.data("seat"))) {
-                            cur_child.addClass("box taken-seat")
-                                .removeClass("open-seat");
-                        }
+            let rows = $("#seats").children();
+            let cur_child = null, children = null;
+            for (let k = 0; k < rows.length; ++k) {
+                children = $(rows[k]).children();
+                for (let i = 0; i < children.length; ++i) {
+                    cur_child = $(children[i]);
+                    if (elem.match(cur_child.data("seat"))) {
+                        cur_child.removeClass("open-seat")
+                            .addClass("taken-seat");
                     }
-                    break;
+                }
             }
-            
         });
         
         open_seat();
