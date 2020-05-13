@@ -1,5 +1,6 @@
 body {
-    font-family: Tahoma;
+    font-family: Verdana;
+    background-color: #33303A;
 }
 
 img {
@@ -9,6 +10,16 @@ img {
     max-width: 80vw;
 }
 
+header {
+    color: #eeeeee;
+    font-size: 2em;
+    margin: 0 0 0 2em;
+}
+
+p {
+    margin: auto;
+}
+
 a { text-decoration: none; }
 
 .filled {
@@ -16,19 +27,36 @@ a { text-decoration: none; }
     color: #ffffff;
 }
 
-.container { padding: 0.2vh 0.2vw; }
+.container {
+    padding: 0.2vh 0.2vw;
+    background-color: #D9C6AB;
+}
+
+.side {
+    min-width: 6vw;
+}
 
 .flex-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-flow: row wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row nowrap;
+    -ms-flex-pack: distribute;
     justify-content: space-around;
 }
 
 .box {
     padding: 10px;
     margin: 5px;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
     flex-grow: 1;
+    -ms-flex-negative: 1;
     flex-shrink: 1;
+    -ms-flex-preferred-size: 3in;
     flex-basis: 3in;
     min-width: 20px;
 }
@@ -36,19 +64,40 @@ a { text-decoration: none; }
 .fbox {
     padding: 10px;
     margin: 10px;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
     flex-grow: 1;
+    -ms-flex-negative: 1;
     flex-shrink: 1;
     min-width: 20px;
 }
 
 .b1 {
+   -webkit-box-ordinal-group: 2;
+   -ms-flex-order: 1;
    order: 1; 
 }
 
 .b2 {
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
     order: 2;
 }
 
 .b3 {
+    -webkit-box-ordinal-group: 4;
+    -ms-flex-order: 3;
     order: 3;
+}
+
+@media only screen and (max-width: 1200px) {
+    .side {
+        min-width: 10vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .side {
+        min-width: 20vw;
+    }
 }

@@ -23,6 +23,20 @@ $(document).ready(function() {
         }
     });
     
+    $("label").click(function() {
+        console.log($("input[type='radio']:checked").val());
+        
+        $("#test").html("<img class='movie' /> <p class='synopsis'></p>");
+        
+		document.getElementById("").onload = function(e) {
+            let x = $("#test").position();
+			$("#test").append("<button id='close' style='position: fixed; top: " + x.top + "px; left: " + x.left + "px; background-color: #ffffff;'>x</button>");
+			$("#close").click(function() {
+				$("#test").html("");
+			});
+		}
+	});
+    
     $display.html(tickets);
 });
 
