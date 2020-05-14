@@ -21,8 +21,8 @@
     <div class="container">
         <div id="test"></div>
 
-        <div style="display: inline; float: left; min-height: 100vh; background-image: url(https://i.vgy.me/2LQ2b8.png); background-repeat: repeat-y; min-width: 20vw;"></div>
-        <div style="display: inline; float: right; min-height: 100vh; background-image: url(https://i.vgy.me/2LQ2b8.png); background-repeat: repeat-y;" class="side"></div>
+        <div style="display: inline; float: left; background-image: url(https://i.vgy.me/2LQ2b8.png); background-repeat: repeat-y; min-width: 20vw;" class="side"></div>
+        <div style="display: inline; float: right; background-image: url(https://i.vgy.me/2LQ2b8.png); background-repeat: repeat-y;" class="side"></div>
         
         <form style="min-height: 100vh; max-width: 75vw;" action="signin.php" method="post">
             <p>
@@ -38,12 +38,17 @@
 
             <span style="vertical-align: top">Please select your movie: </span>
             <p style="min-height: 250px;">
-                <label for="movie1"><img style="max-height: 250px; max-width: 200px; display: inline-block;" src="media/placeholder.png" alt="me"/></label>
-                <input type="radio" name="movie" value="placeholder" id="movie1" checked/>
+                <label for="movie1"><img style="max-height: 250px; max-width: 200px; display: inline-block;" src="media/fantasy.png" alt="me"/></label>
+                <input type="radio" name="movie" value="fantasy" id="movie1" checked/>
 
-
-                <label for="movie2"><img style="max-height: 250px; max-width: 200px; display: inline-block;" src="media/placeholder.png" alt="me"/></label>
-                <input type="radio" name="movie" value="Mess With The Zohan" id="movie2"/>
+                <label for="movie2"><img style="max-height: 250px; max-width: 200px; display: inline-block;" src="media/horror.png" alt="me"/></label>
+                <input type="radio" name="movie" value="horror" id="movie2"/>
+                
+                <label for="movie3"><img style="max-height: 250px; max-width: 200px; display: inline-block;" src="media/scifi.png" alt="me"/></label>
+                <input type="radio" name="movie" value="scifi" id="movie3"/>
+                
+                <label for="movie4"><img style="max-height: 250px; max-width: 200px; display: inline-block;" src="media/western.png" alt="me"/></label>
+                <input type="radio" name="movie" value="western" id="movie4"/>
             </p>
 
             <p><input type="submit" value="Purchase tickets."/></p>

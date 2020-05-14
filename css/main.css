@@ -34,6 +34,7 @@ a { text-decoration: none; }
 
 .side {
     min-width: 6vw;
+    min-height: 100vh;
 }
 
 .flex-container {
@@ -46,6 +47,21 @@ a { text-decoration: none; }
     flex-flow: row nowrap;
     -ms-flex-pack: distribute;
     justify-content: space-around;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-column-gap: 20px;
+    position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	max-width: 80%;
+	max-height: 80vh;
+	background-color: #dddddd;
 }
 
 .box {
@@ -99,5 +115,6 @@ a { text-decoration: none; }
 @media only screen and (max-width: 600px) {
     .side {
         min-width: 20vw;
+        min-height: 170vh;
     }
 }

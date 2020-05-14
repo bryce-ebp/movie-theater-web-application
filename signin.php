@@ -30,10 +30,12 @@
         $movie = $_POST["movie"];
         $refer = $_SERVER["HTTP_REFERER"];
         // check to make sure they came from index
-        if (strcmp($refer, "http://localhost/") != 0) {
+        // this works, but since the sandbox is
+        // password protected I cant test it on there.
+        /*if (strcmp($refer, "http://localhost/") != 0) {
             header("Location: ..");
             exit();
-        }
+        }*/
     
         // create vars to use when we connect to the server.
         $servername = "localhost";
